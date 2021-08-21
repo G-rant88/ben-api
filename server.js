@@ -10,7 +10,6 @@ app.use(express.static("build"));
 
 require("./routes/api-routes.js")(app);
 
-
 db.sequelize.sync({
 }).then(function() {
 	app.listen(PORT, function() {

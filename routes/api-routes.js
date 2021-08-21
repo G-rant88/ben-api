@@ -2,6 +2,7 @@ const db = require("../models");
 const axios = require("axios");
 const base64 = require('base-64');
 const querystring = require('querystring');
+const path = require('path');
 
 module.exports = function(app) {
 
@@ -91,10 +92,6 @@ module.exports = function(app) {
         artist: artistsStr
 
       }).then(function(results) {
-
-        console.log("track added:", isrc);
-        console.log(results);
-
         res.json(results);
       });
     }
@@ -128,6 +125,10 @@ module.exports = function(app) {
       res.json(results);
     });
 
+  });
+
+  app.get("/", function(req, res) {
+    res.sendFile(path.resolve('public/index.html'));
   });
 
 };
